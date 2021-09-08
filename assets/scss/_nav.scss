@@ -19,20 +19,23 @@
   li {
     position: relative;
   }
+
+  > ul > li {
+    padding: 10px 0 10px 24px;
+  }
   
   a, a:focus {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 15px;
-    color: #fff;
+    padding: 0 3px;
+    font-family: $font-primary;
+    font-size: 15px; 
+    font-weight: 600;
+    color: rgba($white, .7);
     white-space: nowrap;
     transition: 0.3s;
-    font-size: 12px; 
-    font-family: $font-primary;
-    text-transform: uppercase;
-    font-weight: 600;
-    letter-spacing: 1px;
+    position: relative;
 
     i {
       font-size: 12px;
@@ -41,8 +44,46 @@
     }
   }
 
+  > ul > li > a:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: $white;
+    visibility: hidden;
+    width: 0px;
+    transition: all 0.3s ease-in-out 0s;
+  }
+
+  a:hover:before, li:hover > a:before, .active:before  {
+    visibility: visible;
+    width: 100%;
+  }
+
   a:hover, .active, .active:focus, li:hover > a  {
-    color: $primary;
+    color: #fff;
+  }
+
+
+  .getstarted {
+    padding: 8px 25px;
+    margin-left: 30px;
+    border-radius: 5px;
+    color: #fff;
+    transition: 0.3s;
+    font-size: 14px;
+    font-weight: 600;
+    border: 2px solid rgba($white, .5);
+    &:hover {
+      color: #fff;
+      border-color: $white;
+    }
+  }
+
+  .getstarted:before, li:hover > .getstarted:before {
+    visibility: hidden;
   }
 
   .dropdown {
@@ -50,7 +91,7 @@
     ul {
       display: block;
       position: absolute;
-      left: 14px;
+      left: 24px;
       top: calc(100% + 30px);
       margin: 0;
       padding: 10px 0;
@@ -60,7 +101,6 @@
       background: #fff;
       box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
       transition: 0.3s;
-      border-radius: 4px;
       
       li {
         min-width: 200px;
@@ -69,10 +109,7 @@
       a {
         padding: 10px 20px;
         font-size: 14px;
-        text-transform: none;
-        font-weight: 400;
         color: $secondary;
-        letter-spacing: 1px;
         i {
           font-size: 12px;
         }
@@ -145,6 +182,7 @@
 }
 
 .navbar-mobile {
+
   position: fixed;
   overflow: hidden;
   top: 0;
@@ -169,16 +207,23 @@
     bottom: 15px;
     left: 15px;
     padding: 10px 0;
-    border-radius: 10px;
     background-color: #fff;
     overflow-y: auto;
     transition: 0.3s;
   }
 
+  > ul > li {
+    padding: 0;
+  }
+
   a {
     padding: 10px 20px;
-    font-size: 14px; 
+    font-size: 15px; 
     color: $secondary;
+  }
+
+  a:hover:before, li:hover > a:before, .active:before  {
+    visibility: hidden;
   }
 
   a:hover, .active, li:hover > a  {

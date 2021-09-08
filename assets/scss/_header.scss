@@ -2,17 +2,30 @@
 # Header
 --------------------------------------------------------------*/
 #header {
-  z-index: 997;
   transition: all 0.5s;
-  height: 80px;
-  background: rgba(darken($secondary, 15), 0.8);
+  z-index: 997;
+  padding: 20px 0;
 
-  &.header-transparent {
-    background: transparent;
+  &.header-scrolled, &.header-inner-pages {
+    background: rgba(darken($primary, 25), 0.8);
+    padding: 12px 0;
   }
 
-  &.header-scrolled {
-    height: 60px;
-    background: rgba(darken($secondary, 15), 0.8);
+  .logo {
+    font-size: 32px;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    a {
+      color: #fff;
+    }
+
+    img {
+      max-height: 40px;
+    }
   }
 }

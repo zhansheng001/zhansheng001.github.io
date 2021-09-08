@@ -1,6 +1,6 @@
 /**
-* Template Name: Laura - v4.3.0
-* Template URL: https://bootstrapmade.com/laura-free-creative-bootstrap-theme/
+* Template Name: Techie - v4.3.0
+* Template URL: https://bootstrapmade.com/techie-free-skin-bootstrap-3/
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
@@ -68,7 +68,7 @@
     let offset = header.offsetHeight
 
     if (!header.classList.contains('header-scrolled')) {
-      offset -= 20
+      offset -= 16
     }
 
     let elementPos = select(el).offsetTop
@@ -159,20 +159,13 @@
   });
 
   /**
-   * Skills animation
+   * Preloader
    */
-  let skilsContent = select('.skills-content');
-  if (skilsContent) {
-    new Waypoint({
-      element: skilsContent,
-      offset: '80%',
-      handler: function(direction) {
-        let progress = select('.progress .progress-bar', true);
-        progress.forEach((el) => {
-          el.style.width = el.getAttribute('aria-valuenow') + '%'
-        });
-      }
-    })
+  let preloader = select('#preloader');
+  if (preloader) {
+    window.addEventListener('load', () => {
+      preloader.remove()
+    });
   }
 
   /**
@@ -190,6 +183,17 @@
       el: '.swiper-pagination',
       type: 'bullets',
       clickable: true
+    },
+    breakpoints: {
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 40
+      },
+
+      1200: {
+        slidesPerView: 3,
+        spaceBetween: 40
+      }
     }
   });
 
@@ -215,7 +219,9 @@
         portfolioIsotope.arrange({
           filter: this.getAttribute('data-filter')
         });
-
+        portfolioIsotope.on('arrangeComplete', function() {
+          AOS.refresh()
+        });
       }, true);
     }
 
@@ -243,6 +249,18 @@
       type: 'bullets',
       clickable: true
     }
+  });
+
+  /**
+   * Animation on scroll
+   */
+  window.addEventListener('load', () => {
+    AOS.init({
+      duration: 1000,
+      easing: 'ease-in-out',
+      once: true,
+      mirror: false
+    })
   });
 
 })()
